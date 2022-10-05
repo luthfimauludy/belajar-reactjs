@@ -11,9 +11,9 @@
       "price": 745
     },
     {
-      "id": 3,
-      "title": "Product 3",
-      "price": 235
+      "title": "Product 3 Updated",
+      "price": 235,
+      "id": 3
     },
     {
       "id": 4,
