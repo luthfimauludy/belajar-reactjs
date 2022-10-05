@@ -1,13 +1,45 @@
-const ProductList = ({products, deleteProduct}) => {
+import { useState, useEffect } from "react"
+
+const ProductList = () => {
+    const [products, setProducts] = useState([]);
+
+    useEffect(() => {
+        fectData();
+    }, []);
+
+    const fectData = async() => {
+        const response = await fetch('http://localhost:8080/products');
+        const data = await response.json();
+        setProducts(data);
+    }
+
     return (
         <div>
-            <ul>
-                {products.map((product) => (
-                    <li key={product.id}>{product.title} - {product.price}
-                    <button onClick={() => deleteProduct(product.id)}>Delete</button>
-                    </li>
-                ))}
-            </ul>
+            <table className="table is-striped">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Title</th>
+                        <th>Price</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {products.map((product, index) => (
+                        <tr key={product.id}>
+                            <td>{index +1}</td>
+                            <td>{product.title}</td>
+                            <td>{product.price}</td>
+                            <td>
+                                <button className="button is-small is-info">Edit</button>
+                                <button className="button is-small is-danger">Delete</button>
+                            </td>
+                        </tr>
+                    ))}
+                    
+
+                </tbody>
+            </table>
         </div>
     )
 }
