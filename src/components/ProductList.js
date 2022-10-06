@@ -14,9 +14,20 @@ const ProductList = () => {
         setProducts(data);
     }
 
+    const deleteProduct = async(id) => {
+        await fetch(`http://localhost:8080/products/${id}`, {
+            method: "DELETE",
+            headers:{
+                'Content-Type': 'application/json'
+            }
+        });
+        fectData();
+    }
+
     return (
         <div>
-            <table className="table is-striped">
+            <Link to="/add" className="button is-primary">Add New</Link>
+            <table className="table is-striped is-fullwidth">
                 <thead>
                     <tr>
                         <th>No</th>
@@ -33,7 +44,7 @@ const ProductList = () => {
                             <td>{product.price}</td>
                             <td>
                                 <Link to={`/edit/${product.id}`} className="button is-small is-info">Edit</Link>
-                                <button className="button is-small is-danger">Delete</button>
+                                <button onClick={() => deleteProduct(product.id)} className="button is-small is-danger">Delete</button>
                             </td>
                         </tr>
                     ))}
