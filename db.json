@@ -16,14 +16,9 @@
       "price": 514
     },
     {
-      "title": "Product New",
-      "price": "989",
-      "id": 6
-    },
-    {
-      "title": "Produk Updated",
-      "price": "123",
-      "id": 7
+      "title": "Product from Production",
+      "price": "9999",
+      "id": 8
     }
   ]
 }
